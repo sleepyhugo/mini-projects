@@ -12,7 +12,7 @@ Examples include:
 - CLI Calculator
 - Bank Account Simulator
 - Dice Rolling Simulator
-- Number Guessing Game
+- Battleship Game
 - Other small utilities and games
 
 More projects will be added as I continue learning C++.
