@@ -6,7 +6,6 @@ int main() {
     int spaces = 0;
     int characters = 0;
 
-
     cout << "Enter sentence: ";
     getline(cin, sentence);
 
@@ -17,6 +16,7 @@ int main() {
             characters++;
         }
     }
+
     cout << "Characters: " << sentence.length() << endl;
     cout << "Spaces: " << spaces << endl;
     cout << "Letters: " << characters << endl;
