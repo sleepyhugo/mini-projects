@@ -1,26 +1,26 @@
 #include <iostream>
 #include <string>
 
-int add(int a, int b) {
+double add(double a, double b) {
     return a + b;
 }
 
-int subtract(int a, int b) {
+double subtract(double a, double b) {
     return a - b;
 }
 
-int multiply(int a, int b) {
+double multiply(double a, double b) {
     return a * b;
 }
 
-int divide(int a, int b) {
+double divide(double a, double b) {
     return a / b;
 }
 
 int main() {
-    int a;
-    int b;
-    int result = 0;
+    double a;
+    double b;
+    double result = 0;
     std::string op;
 
     std::cout << "Welcome to the Calculator app!\n";
