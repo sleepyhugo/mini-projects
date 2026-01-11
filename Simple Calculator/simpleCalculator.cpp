@@ -1,26 +1,37 @@
 #include <iostream>
 #include <string>
+#include <limits>
+
+// Helper function to ensure we get a valid number from the user
+double getNumber(const std::string& prompt) {
+    double value;
+    while (true) {
+        std::cout << prompt;
+        if (std::cin >> value) {
+            return value;
+        } else {
+            std::cout << "Invalid input! Please enter a numeric value.\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
+}
 
 double add(double a, double b) {
     return a + b;
 }
-
 double subtract(double a, double b) {
     return a - b;
 }
-
 double multiply(double a, double b) {
     return a * b;
 }
-
 double divide(double a, double b) {
     return a / b;
 }
 
 int main() {
-    double a;
-    double b;
-    double result = 0;
+    double a, b, result = 0;
     std::string op;
 
     std::cout << "Welcome to the Calculator app!\n";
@@ -35,11 +46,9 @@ int main() {
             break;
         }
 
-        std::cout << "Enter first number: ";
-        std::cin >> a;
-
-        std::cout << "Enter second number: ";
-        std::cin >> b;
+        // New helper function for both numbers
+        a = getNumber("Enter first number: ");
+        b = getNumber("Enter second number: ");
 
         if (op == "+") {
             result = add(a, b);
@@ -54,7 +63,7 @@ int main() {
             }
             result = divide(a, b);
         } else {
-            std::cout << "Invalid input!" << std::endl;
+            std::cout << "Invalid operator!" << std::endl;
             continue;
         }
 
