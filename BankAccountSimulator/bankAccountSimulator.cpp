@@ -36,45 +36,43 @@ int main() {
         std::cout << "\nEnter your choice: ";
         std::cin >> input;
 
-        if (input == 1) {
-            std::cout << "Enter amount to deposit: ";
-            std::cin >> userAmount;
+        switch (input) {
+            case 1:
+                std::cout << "Enter amount to deposit: ";
+                std::cin >> userAmount;
+                if (userAmount <= 0) {
+                    std::cout << "Amount must be positive.\n";
+                } else {
+                    balance = deposit(balance, userAmount);
+                    std::cout << "\nDeposit successful! \nNew balance: $" << balance << std::endl;
+                }
+                break;
 
-            if (userAmount <= 0) {
-                std::cout << "Amount must be positive.\n";
-                continue;
-            }
+            case 2:
+                std::cout << "Enter amount to withdraw: ";
+                std::cin >> userAmount;
+                if (userAmount <= 0) {
+                    std::cout << "Amount must be positive.\n";
+                } else {
+                    double oldBalance = balance;
+                    balance = withdraw(balance, userAmount);
+                    if (balance != oldBalance) {
+                        std::cout << "\nWithdrawal successful! \nNew balance: $" << balance << std::endl;
+                    }
+                }
+                break;
 
-            balance = deposit(balance, userAmount);
-            std::cout << "\nDeposit successful! \nNew balance: $" << balance << std::endl;
+            case 3:
+                checkBalance(balance);
+                break;
 
-        } else if (input == 2) {
-            std::cout << "Enter amount to withdraw: ";
-            std::cin >> userAmount;
+            case 4:
+                std::cout << "\nThank you for using our Bank App! \nGoodbye." << std::endl;
+                return 0;
 
-            if (userAmount <= 0) {
-                std::cout << "Amount must be positive.\n";
-                continue;
-            }
-
-            double oldBalance = balance;
-            balance = withdraw(balance, userAmount);
-
-            if (balance != oldBalance) {
-                std::cout << "\nWithdrawal successful! \nNew balance: $" << balance << std::endl;
-            }
-
-
-        } else if (input == 3) {
-            checkBalance(balance);
-
-        } else if (input == 4) {
-            std::cout << "\nThank you for using our Bank App! \nGoodbye." << std::endl;
-            break;
-
-        } else {
-            std::cout << "\nInput unrecognized. Try Again!" << std::endl;
-            continue;
+            default:
+                std::cout << "\nInput unrecognized. Try Again!" << std::endl;
+                break;
         }
     }
     return 0;
